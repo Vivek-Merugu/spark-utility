@@ -1,0 +1,23 @@
+To read plain text json:
+======================================
+val inputDf = sparkSession
+          .read
+          .text("C:\\vivek\\Tokenization\\Tokenization_config\\order_avro\\order-abris-avro-config\\inputdata\\order_json.txt")
+
+To write console output:
+=====================================
+        inputDf.writeStream
+          .format("console")
+          .outputMode("append")
+          .option("truncate",false)
+          .start()
+
+
+To write the streaming dataframe to external file:
+=====================================================
+inputDf.selectExpr("CAST(key as STRING)", "CAST(value as STRING)", "topic", "partition", "offset", "timestamp", "timestampType").writeStream
+          .outputMode("append")
+          .format("csv")
+          .option("checkpointLocation", "C:\\vivek\\Tokenization\\TokenizationCheckPoint\\marsh_intermediate\\inputDF")
+          .option("path", "C:\\vivek\\Tokenization\\TokenizationIntermediateResult\\inputDF")
+          .start()
