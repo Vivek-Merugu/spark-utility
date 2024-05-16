@@ -21,3 +21,12 @@ inputDf.selectExpr("CAST(key as STRING)", "CAST(value as STRING)", "topic", "par
           .option("checkpointLocation", "C:\\vivek\\Tokenization\\TokenizationCheckPoint\\marsh_intermediate\\inputDF")
           .option("path", "C:\\vivek\\Tokenization\\TokenizationIntermediateResult\\inputDF")
           .start()
+
+Disable spark logs:
+========================================================
+Logger.getLogger("org").setLevel(Level.OFF)
+    Logger.getLogger("akka").setLevel(Level.OFF)
+
+
+    val rootLogger = Logger.getRootLogger()
+    rootLogger.setLevel(Level.ERROR)
