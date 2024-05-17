@@ -30,3 +30,11 @@ Logger.getLogger("org").setLevel(Level.OFF)
 
     val rootLogger = Logger.getRootLogger()
     rootLogger.setLevel(Level.ERROR)
+
+=================================================================
+ val spark: SparkSession = SparkSession.builder()
+      .master("local")
+      .appName("ARBiS")
+      .getOrCreate()
+
+    spark.sparkContext.setLogLevel("ERROR")
